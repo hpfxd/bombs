@@ -1,0 +1,14 @@
+---
+layout: default
+title: Download
+---
+<h3>Download</h3>
+<noscript><p>Enable JavaScript to continue.</p></noscript>
+<p id="e"></p>
+<script>
+	$.getJSON("https://circleci.com/api/v1.1/project/github/hpfxd/bombs/latest/artifacts", function(data) {
+		window.location = data[0].url;
+
+		$("#e").html("Your download should have started.<br/>If not, click <a href='" + data[0].url + "'>here</a>.");
+	});
+</script>

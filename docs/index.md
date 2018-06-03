@@ -32,3 +32,7 @@ Bombs:
 ```
 ### Discord server
 [![Instant invite](https://discordapp.com/api/guilds/452697743396175873/widget.png)](https://discord.gg/3bVRcru)
+
+### Download
+You can download the plugin [here](/download)!  
+*tested with Spigot 1.8.8*
