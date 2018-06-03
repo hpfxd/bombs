@@ -13,6 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.json.JSONObject;
 import xyz.tooger.bombs.events.BombEvent;
 import xyz.tooger.bombs.events.PreBombEvent;
@@ -74,14 +75,16 @@ public class BombListener implements Listener {
                         final Item dropped = player.getWorld().dropItem(player.getLocation(), item);
                         dropped.setVelocity(player.getLocation().getDirection().multiply(speed).normalize());
                         dropped.setPickupDelay(9001); // pickup delay is over nine thousand.
-                        Bombs.getInstance().getServer().getScheduler().runTaskTimer(Bombs.getInstance(), () -> {
-                            cooldowns.put(player.getUniqueId().toString(), cooldowns.getInt(player.getUniqueId().toString()) - 1);
-                            if (cooldowns.getInt(player.getUniqueId().toString()) < 1) {
-                                cooldowns.remove(player.getUniqueId().toString());
-                                this.cancel();
-
+                        new BukkitRunnable() {
+                            @Override
+                            public void run() {
+                                cooldowns.put(player.getUniqueId().toString(), cooldowns.getInt(player.getUniqueId().toString()) - 1);
+                                if (cooldowns.getInt(player.getUniqueId().toString()) < 1) {
+                                    cooldowns.remove(player.getUniqueId().toString());
+                                    this.cancel();
+                                }
                             }
-                        }, 20, 20);
+                        }.runTaskTimer(Bombs.getInstance(), 20, 20);
 
                         Bombs.getInstance().getServer().getScheduler().scheduleSyncDelayedTask(Bombs.getInstance(), () -> {
                             dropped.remove();
