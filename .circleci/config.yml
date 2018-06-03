@@ -1,6 +1,8 @@
 version: 2
 jobs:
   build:
+    docker:
+      - image: circleci/openjdk:8-jdk
     working_directory: ~/bombs
     steps:
       - checkout
@@ -15,16 +17,9 @@ jobs:
             - ~/.m2
           key: bombs-{{ checksum "pom.xml" }}
       
-      - run:
-        name: Build the jar
-        command: mvn package
-      - run:
-        name: Move the jar
-        command: |
-          mkdir artifacts/
-          cp target/*.jar artifacts/
+      - run: mvn package
+      - run: mkdir artifacts/
+      - run: cp target/*.jar artifacts/
       
       - store_artifacts:
           path: artifacts
-  docker:
-      - image: circleci/openjdk:8-jdk
