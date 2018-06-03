@@ -30,6 +30,8 @@ Bombs:
     speed: 5 # The bomb will be thrown at the player's direction multiplied by five.
     dropMode: drop # Drops the items onto the ground.
 ```
+Preview
+<video src="https://i.imgur.com/reTfMeA.mp4" controls="true"></video>
 ### Discord server
 [![Instant invite](https://discordapp.com/api/guilds/452697743396175873/widget.png)](https://discord.gg/3bVRcru)
 
