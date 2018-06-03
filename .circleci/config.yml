@@ -2,9 +2,7 @@ version: 2
 jobs:
   build:
     working_directory: ~/bombs
-  docker:
-      - image: circleci/openjdk:8-jdk
-  steps:
+    steps:
       - checkout
 
       - restore_cache:
@@ -28,3 +26,5 @@ jobs:
       
       - store_artifacts:
           path: artifacts
+  docker:
+      - image: circleci/openjdk:8-jdk
