@@ -11,7 +11,7 @@ It will destroy any blocks in a set radius of the explosion.
 * Unlimited bombs
 * Customizable
 * Supports [WorldGuard](https://dev.bukkit.org/projects/worldguard)
-* Open source
+* [Open source](https://github.com/hpfxd/bombs)
 * Great for prison servers!
 
 
