@@ -35,13 +35,13 @@ public class BombListener implements Listener {
                 final List<String> lore = player.getItemInHand().getItemMeta().getLore();
 
                 item.setAmount(1);
-                this.removeOneFromInv(player);
 
                 if (lore.size() != 0 && lore.get(0).endsWith(" bomb")) { // is bomb
                     final String type = lore.get(0)  // checks what type the bomb is so that
                             .split(" ")[0]        // we may use it later
                             .replace(ChatColor.GRAY + "", "");
                     if (cfg.contains(type)) { // bomb exists
+                        this.removeOneFromInv(player);
                         event.setCancelled(true);
                         // Options
                         final ConfigurationSection bombCfg = cfg.getConfigurationSection(type);
