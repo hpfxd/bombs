@@ -52,6 +52,11 @@ public class Bombs extends JavaPlugin {
             }
 
             @Override
+            public int getCooldown() {
+                return getCfg().getInt("Bombs." + key + ".cooldown");
+            }
+
+            @Override
             public String getDropMode() {
                 return getCfg().getString("Bombs." + key + ".dropMode");
             }

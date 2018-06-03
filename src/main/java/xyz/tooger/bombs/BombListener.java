@@ -13,6 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+import org.json.JSONObject;
 import xyz.tooger.bombs.events.BombEvent;
 import xyz.tooger.bombs.events.PreBombEvent;
 
@@ -20,6 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BombListener implements Listener {
+    private JSONObject cooldowns = new JSONObject();
+
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
         if (!event.getPlayer().hasPermission("bombs.use")) return;
@@ -46,6 +49,7 @@ public class BombListener implements Listener {
                         final int radius = bombCfg.getInt("radius");
                         final int delay = bombCfg.getInt("delay");
                         final int speed = bombCfg.getInt("speed");
+                        final int cooldown = bombCfg.getInt("cooldown");
                         final String dropMode = bombCfg.getString("dropMode");
                         Bomb bomb = new Bomb() {
                             @Override public String getName() { return type; }
@@ -53,9 +57,14 @@ public class BombListener implements Listener {
                             @Override public int getRadius() { return radius; }
                             @Override public int getDelay() { return delay; }
                             @Override public int getSpeed() { return speed; }
+                            @Override public int getCooldown() { return cooldown; }
                             @Override public String getDropMode() { return dropMode; }
                         };
                         PreBombEvent pbe = new PreBombEvent(player, bomb);
+                        if (cooldowns.has(player.getUniqueId().toString())) {
+                            player.sendMessage(ChatColor.GRAY + "You are on cooldown for " + ChatColor.RED + cooldowns.getInt(player.getUniqueId().toString()) + ChatColor.GRAY + " seconds.");
+                            pbe.setCancelled(true);
+                        }
                         Bukkit.getPluginManager().callEvent(pbe);
 
                         if (pbe.isCancelled()) return;
@@ -64,6 +73,15 @@ public class BombListener implements Listener {
                         final Item dropped = player.getWorld().dropItem(player.getLocation(), item);
                         dropped.setVelocity(player.getLocation().getDirection().multiply(speed).normalize());
                         dropped.setPickupDelay(9001); // pickup delay is over nine thousand.
+
+                        cooldowns.put(player.getUniqueId().toString(), cooldown);
+                        Bombs.getInstance().getServer().getScheduler().runTaskTimer(Bombs.getInstance(), () -> {
+                            cooldowns.put(player.getUniqueId().toString(), cooldowns.getInt(player.getUniqueId().toString()) - 1);
+                            if (cooldowns.getInt(player.getUniqueId().toString()) < 1) {
+                                cooldowns.remove(player.getUniqueId().toString());
+
+                            }
+                        }, 20, 20);
 
                         Bombs.getInstance().getServer().getScheduler().scheduleSyncDelayedTask(Bombs.getInstance(), () -> {
                             dropped.remove();

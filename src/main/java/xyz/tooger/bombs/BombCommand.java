@@ -34,6 +34,7 @@ public class BombCommand implements CommandExecutor {
                     messages.add("  &bRadius&7: " + bomb.getRadius());
                     messages.add("  &bDelay&7: " + bomb.getDelay());
                     messages.add("  &bSpeed&7: " + bomb.getSpeed());
+                    messages.add("  &bCooldown&7: " + bomb.getCooldown());
                     messages.add("  &bDrop mode&7: " + bomb.getDropMode());
 
                     s.sendMessage(ChatColor.translateAlternateColorCodes('&', String.join("\n", messages)));

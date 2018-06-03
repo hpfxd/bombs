@@ -6,5 +6,6 @@ public interface Bomb {
     int getRadius();
     int getDelay();
     int getSpeed();
+    int getCooldown();
     String getDropMode();
 }
