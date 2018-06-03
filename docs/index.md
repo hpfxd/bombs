@@ -1,4 +1,6 @@
-https://hpfxd.tooger.xyz/bombs
+---
+title: Home
+---
 ### Welcome to Bombs.
 Bombs is a Spigot plugin that will add 'bombs' to the game.  
 Once you right click the bomb it will explode after a set cooldown.  

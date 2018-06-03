@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home &bull; Bombs</title>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#FFA500">
+    <meta property="og:site_name" content="hpfxd.tooger.xyz">
+    <meta property="og:title" content="Bombs">
+    <meta property="og:description" content="Home">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/hljs/styles/github.css">
+    <script src="assets/hljs/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <style>
+        h1, h3 {font-family: 'Bowlby One SC', cursive;}
+    </style>
+</head>
+<body>
+<div id="main">
+    <div>
+        <div class="container">
+            <h1 style="text-align: center;">Bombs</h1>
+            <h2 style="text-align: center;">Home</h2>
+            <div class="jumbotron">
+                <h3 id="welcome-to-bombs">Welcome to Bombs.</h3>
+<p>Bombs is a Spigot plugin that will add ‘bombs’ to the game.<br />
+Once you right click the bomb it will explode after a set cooldown.<br />
+It will destroy any blocks in a set radius of the explosion.</p>
+<h3 id="features">Features</h3>
+<ul>
+  <li>Free!</li>
+  <li>Unlimited bombs</li>
+  <li>Customizable</li>
+  <li>Supports <a href="https://dev.bukkit.org/projects/worldguard">WorldGuard</a></li>
+  <li>Open source</li>
+</ul>
+
+<h3 id="default-configuration">Default configuration</h3>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">Bombs</span><span class="pi">:</span>
+  <span class="na">example</span><span class="pi">:</span> <span class="c1"># Can be any name.</span>
+    <span class="na">enabled</span><span class="pi">:</span> <span class="no">true</span> <span class="c1"># Is the bomb enabled?</span>
+    <span class="na">radius</span><span class="pi">:</span> <span class="s">3</span> <span class="c1"># Radius of the blocks that will be broken.</span>
+    <span class="na">delay</span><span class="pi">:</span> <span class="s">3</span> <span class="c1"># Delay in seconds until the bomb explodes.</span>
+    <span class="na">speed</span><span class="pi">:</span> <span class="s">3</span> <span class="c1"># Speed that the bomb should be thrown at.</span>
+    <span class="na">dropMode</span><span class="pi">:</span> <span class="s">inventory</span> <span class="c1"># Puts the items into the player's inventory, does not drop anything.</span>
+  <span class="na">largerExample</span><span class="pi">:</span>
+    <span class="na">enabled</span><span class="pi">:</span> <span class="no">true</span> <span class="c1"># Is enabled</span>
+    <span class="na">radius</span><span class="pi">:</span> <span class="s">5</span> <span class="c1"># Will break all blocks within 5 meters of the explosion.</span>
+    <span class="na">delay</span><span class="pi">:</span> <span class="s">3</span> <span class="c1"># Waits 3 seconds until exploding.</span>
+    <span class="na">speed</span><span class="pi">:</span> <span class="s">5</span> <span class="c1"># The bomb will be thrown at the player's direction multiplied by five.</span>
+    <span class="na">dropMode</span><span class="pi">:</span> <span class="s">drop</span> <span class="c1"># Drops the items onto the ground.</span>
+</code></pre></div></div>
+<h3 id="discord-server">Discord server</h3>
+<p><a href="https://discord.gg/3bVRcru"><img src="https://discordapp.com/api/guilds/452697743396175873/widget.png" alt="Instant invite" /></a></p>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
