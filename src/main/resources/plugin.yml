@@ -1,0 +1,6 @@
+name: Bombs
+version: ${project.version}
+author: hpfxd
+description: Why use a pickaxe when you can mine with bombs?
+website: https://hpfxd.tooger.xyz/bombs/
+main: xyz.tooger.bombs.Bombs
