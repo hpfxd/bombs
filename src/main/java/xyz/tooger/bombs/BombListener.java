@@ -64,7 +64,7 @@ public class BombListener implements Listener {
                         dropped.setVelocity(player.getLocation().getDirection().multiply(speed).normalize());
                         dropped.setPickupDelay(9001); // pickup delay is over nine thousand.
 
-                        new Bombs().getServer().getScheduler().scheduleSyncDelayedTask(new Bombs(), () -> {
+                        Bombs.getInstance().getServer().getScheduler().scheduleSyncDelayedTask(Bombs.getInstance(), () -> {
                             dropped.remove();
                             final List<Location> locs = new ArrayList<>();
                             for (Location loc : util.getLocsNear(dropped.getLocation(), radius)) {
