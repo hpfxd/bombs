@@ -78,6 +78,7 @@ public class BombListener implements Listener {
                             cooldowns.put(player.getUniqueId().toString(), cooldowns.getInt(player.getUniqueId().toString()) - 1);
                             if (cooldowns.getInt(player.getUniqueId().toString()) < 1) {
                                 cooldowns.remove(player.getUniqueId().toString());
+                                this.cancel();
 
                             }
                         }, 20, 20);
