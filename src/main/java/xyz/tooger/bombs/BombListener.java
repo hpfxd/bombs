@@ -70,11 +70,10 @@ public class BombListener implements Listener {
                         if (pbe.isCancelled()) return;
                         if (!enabled) return;
 
+                        cooldowns.put(player.getUniqueId().toString(), cooldown);
                         final Item dropped = player.getWorld().dropItem(player.getLocation(), item);
                         dropped.setVelocity(player.getLocation().getDirection().multiply(speed).normalize());
                         dropped.setPickupDelay(9001); // pickup delay is over nine thousand.
-
-                        cooldowns.put(player.getUniqueId().toString(), cooldown);
                         Bombs.getInstance().getServer().getScheduler().runTaskTimer(Bombs.getInstance(), () -> {
                             cooldowns.put(player.getUniqueId().toString(), cooldowns.getInt(player.getUniqueId().toString()) - 1);
                             if (cooldowns.getInt(player.getUniqueId().toString()) < 1) {
