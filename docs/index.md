@@ -12,6 +12,7 @@ It will destroy any blocks in a set radius of the explosion.
 * Customizable
 * Supports [WorldGuard](https://dev.bukkit.org/projects/worldguard)
 * Open source
+* Great for prison servers!
 
 
 ### Default configuration
@@ -32,6 +33,27 @@ Bombs:
 ```
 Preview
 <video src="https://i.imgur.com/reTfMeA.mp4" controls="true"></video>
+
+### API
+We provide two events.
+* `PreBombEvent`: Called before the bomb is thrown.  
+Cancel to not explode the bomb at all.
+* `BombEvent`: Called when the bomb has exploded.  
+Cancel to stop destroying blocks.
+
+`Bomb` interface:
+```java
+public interface Bomb {
+    String getName();
+    boolean isEnabled();
+    int getRadius();
+    int getDelay();
+    int getSpeed();
+    String getDropMode();
+}
+```
+
+[View API examples](api-example)
 ### Discord server
 [![Instant invite](https://discordapp.com/api/guilds/452697743396175873/widget.png)](https://discord.gg/3bVRcru)
 
