@@ -17,19 +17,23 @@ It will destroy any blocks in a set radius of the explosion.
 
 ### Default configuration
 ```yaml
+# https://github.com/hpfxd/bombs/
 Bombs:
   example: # Can be any name.
     enabled: true # Is the bomb enabled?
     radius: 3 # Radius of the blocks that will be broken.
     delay: 3 # Delay in seconds until the bomb explodes.
     speed: 3 # Speed that the bomb should be thrown at.
+    cooldown: 5 # Cooldown in seconds.
     dropMode: inventory # Puts the items into the player's inventory, does not drop anything.
   largerExample:
     enabled: true # Is enabled
     radius: 5 # Will break all blocks within 5 meters of the explosion.
     delay: 3 # Waits 3 seconds until exploding.
     speed: 5 # The bomb will be thrown at the player's direction multiplied by five.
+    cooldown: 10 # The player will not be able to throw another bomb for 10 seconds.
     dropMode: drop # Drops the items onto the ground.
+
 ```
 Preview
 <video src="https://i.imgur.com/reTfMeA.mp4" controls="true"></video>
