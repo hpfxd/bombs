@@ -11,7 +11,7 @@ public class Bombs extends JavaPlugin {
     	instance = this;
         this.getServer().getPluginManager().registerEvents(new BombListener(), this);
         this.getCommand("bomb").setExecutor(new BombCommand());
-        this.getConfig().options().copyDefaults(true);
+        this.saveDefaultConfig();
 
         Metrics metrics = new Metrics(this);
     }
