@@ -4,3 +4,9 @@ author: hpfxd
 description: Why use a pickaxe when you can mine with bombs?
 website: https://hpfxd.tooger.xyz/bombs/
 main: xyz.tooger.bombs.Bombs
+commands:
+  bomb:
+    description: Use bombs!
+    aliases: ["bombs"]
+    permission: bombs.use
+    usage: "/bombs list OR /bomb give <player> <type>"

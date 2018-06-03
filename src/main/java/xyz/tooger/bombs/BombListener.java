@@ -22,6 +22,7 @@ import java.util.List;
 public class BombListener implements Listener {
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
+        if (!event.getPlayer().hasPermission("bombs.use")) return;
         if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK) || event.getAction().equals(Action.RIGHT_CLICK_AIR)) {
             try {
                 // Variables

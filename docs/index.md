@@ -34,6 +34,16 @@ Bombs:
 Preview
 <video src="https://i.imgur.com/reTfMeA.mp4" controls="true"></video>
 
+### Commands and permissions
+Permissions:
+* `bombs.use` - Permission to use bombs and `/bomb`
+* `bombs.give` - Permission to use `/bomb give <player> <type>`
+ 
+Commands:
+* `/bombs list` - Show all of the current bombs.
+* `/bomb give <player> <type>` - Give a player a `<type>` bomb.
+
+
 ### API
 We provide two events.
 * `PreBombEvent`: Called before the bomb is thrown.  
