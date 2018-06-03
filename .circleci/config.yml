@@ -1,0 +1,30 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/bombs
+  docker:
+      - image: circleci/openjdk:8-jdk
+  steps:
+      - checkout
+
+      - restore_cache:
+          key: bombs-{{ checksum "pom.xml" }}
+      
+      - run: mvn dependency:go-offline
+      
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: bombs-{{ checksum "pom.xml" }}
+      
+      - run:
+        name: Build the jar
+        command: mvn package
+      - run:
+        name: Move the jar
+        command: |
+          mkdir artifacts/
+          cp target/*.jar artifacts/
+      
+      - store_artifacts:
+          path: artifacts
