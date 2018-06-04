@@ -2,13 +2,41 @@
 layout: default
 title: Download
 ---
-<h3>Download</h3>
+<h3>Download <span id="version">latest build</span></h3>
 <noscript><p>Enable JavaScript to continue.</p></noscript>
 <p id="e"></p>
 <script>
-	$.getJSON("https://circleci.com/api/v1.1/project/github/hpfxd/bombs/latest/artifacts", function(data) {
-		window.location = data[0].url;
+    if (window.location.hash) {
+        $.ajax({
+            url: "https://circleci.com/api/v1.1/project/github/hpfxd/bombs/" + window.location.hash.replace("#", "") + "/artifacts",
+            type: "GET",
+            crossDomain: true,
+            dataType: "json",
+            success: function (data) {
+                if (isArray(data)) {
+                    window.location = data[0].url;
+                    $("#e").html("Your download should have started.<br/>If not, click <a href='" + data[0].url + "'>here</a>." +
+                        "<br/>Download latest (possibly unstable) build <a href='download'>here</a>");
+                } else {
+                    $("#e").html("The build " + window.location.hash.replace("#", "") + " does not exist.<br/>" +
+                        "<a href='download'>Download latest</a>");
+                }
+            },
+            error: function (xhr, status) {
+                $("#e").html("The build " + window.location.hash.replace("#", "") + " does not exist.<br/>" +
+                    "<a href='download'>Download latest</a>");
+            }
+        });
+        $("#version").text("build " + window.location.hash.replace("#", ""));
+    } else {
+        $.getJSON("https://circleci.com/api/v1.1/project/github/hpfxd/bombs/latest/artifacts", function (data) {
+            window.location = data[0].url;
 
-		$("#e").html("Your download should have started.<br/>If not, click <a href='" + data[0].url + "'>here</a>.");
-	});
+            $("#e").html("Your download should have started.<br/>If not, click <a href='" + data[0].url + "'>here</a>.");
+        });
+    }
+
+    function isArray(what) {
+        return Object.prototype.toString.call(what) === '[object Array]';
+    }
 </script>
