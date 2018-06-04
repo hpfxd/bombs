@@ -42,7 +42,6 @@ public class BombListener implements Listener {
                             .split(" ")[0]        // we may use it later
                             .replace(ChatColor.GRAY + "", "");
                     if (cfg.contains(type)) { // bomb exists
-                        this.removeOneFromInv(player);
                         event.setCancelled(true);
                         // Options
                         final ConfigurationSection bombCfg = cfg.getConfigurationSection(type);
@@ -70,7 +69,7 @@ public class BombListener implements Listener {
 
                         if (pbe.isCancelled()) return;
                         if (!enabled) return;
-
+                        this.removeOneFromInv(player);
                         cooldowns.put(player.getUniqueId().toString(), cooldown);
                         final Item dropped = player.getWorld().dropItem(player.getLocation(), item);
                         dropped.setVelocity(player.getLocation().getDirection().multiply(speed).normalize());
