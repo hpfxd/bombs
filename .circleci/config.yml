@@ -19,7 +19,7 @@ jobs:
       
       - run: mvn package
       - run: mkdir artifacts/
-      - run: cp target/*.jar artifacts/
+      - run: cp target/Bombs.jar artifacts/
       
       - store_artifacts:
           path: artifacts
